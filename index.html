@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon"
+    href="https://camo.githubusercontent.com/ea14133a8f0cb9bb1902f7723196d410a289810085be786e4afc4aff68f0740a/68747470733a2f2f6d6574656f72636c69656e742e636f6d2f69636f6e2e706e67"
+    type="image/png">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #161923;
+      color: #fff;
+    }
+
+    #paintCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #fetchingText {
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      font-size: 24px;
+      user-select: none;
+    }
+
+    #resetText {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      font-size: 16px;
+      user-select: none;
+      cursor: default;
+    }
+  </style>
+  <title>Finding Tunnel</title>
+</head>
+
+<body>
+  <div id="fetchingText">Fetching Tunnel...</div>
+  <div id="resetText">Click to reset</div>
+  <canvas id="paintCanvas"></canvas>
+  <script src="script.js"></script>
+</body>
+
+</html>
