@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   setTimeout(function() {
-    var redirectTo = 'OFFLINE'; // REPLACE WITH URL
+    var redirectTo = 'https://saint-consecutive-adjustable-converted.trycloudflare.com'; // REPLACE WITH URL
     var notificationMessage = 'Tunnel offline, come back later.';
 
     if (isValidUrl(redirectTo)) {
