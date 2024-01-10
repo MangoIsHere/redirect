@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   const canvas = document.getElementById('paintCanvas');
   const ctx = canvas.getContext('2d');
-  let paintInterval;
   let paintColor;
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  function handleMouseMove(event) {
-    const { clientX: x, clientY: y } = event;
+  function handleMouseMove({ clientX: x, clientY: y }) {
     const paintSize = 20;
     ctx.fillStyle = paintColor;
     ctx.beginPath();
@@ -21,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function resetPainting() {
-    clearInterval(paintInterval);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     paintColor = getRandomColor();
     startPainting();
@@ -30,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
   paintColor = getRandomColor();
   resetPainting();
 
-  document.addEventListener('click', resetPainting);
+  setInterval(resetPainting, 5000);
 
   function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -42,20 +39,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   setTimeout(function() {
-    var redirectTo = 'OFFLINE'; // REPLACE WITH URL
-    var notificationMessage = 'Tunnel offline, come back later.';
+    const redirectTo = 'OFFLINE'; // REPLACE WITH URL
 
     if (isValidUrl(redirectTo)) {
       try {
+        showAlertAndClose();
         window.location.href = redirectTo;
       } catch (error) {
         console.error(error);
-        showAlertAndClose(notificationMessage);
+        displayNotFoundMessage();
       }
     } else {
-      showAlertAndClose(notificationMessage);
+      showAlertAndClose();
+      displayNotFoundMessage();
     }
-  }, 5000);
+  }, 10000);
 
   function isValidUrl(url) {
     try {
@@ -66,8 +64,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  function showAlertAndClose(message) {
-    alert(message);
-    window.close();
+  function showAlertAndClose() {
+    const notificationMessage = 'Page Not Found';
+    alert(notificationMessage);
+  }
+
+  function displayNotFoundMessage() {
+    const notFoundMessage = document.createElement('div');
+    notFoundMessage.innerHTML = 'Page not found, tunnel may be offline.';
+    notFoundMessage.style.position = 'fixed';
+    notFoundMessage.style.top = '0';
+    notFoundMessage.style.left = '0';
+    notFoundMessage.style.width = '100%';
+    notFoundMessage.style.height = '100%';
+    notFoundMessage.style.backgroundColor = 'black'; // Set background color to black
+    notFoundMessage.style.color = 'white'; // Set text color to white
+    notFoundMessage.style.textAlign = 'center';
+    notFoundMessage.style.paddingTop = '20%';
+    notFoundMessage.style.fontSize = '24px';
+    notFoundMessage.style.zIndex = '9999';
+
+    document.body.appendChild(notFoundMessage);
   }
 });
