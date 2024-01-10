@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
     notFoundMessage.style.left = '0';
     notFoundMessage.style.width = '100%';
     notFoundMessage.style.height = '100%';
-    notFoundMessage.style.backgroundColor = 'black'; // Set background color to black
-    notFoundMessage.style.color = 'white'; // Set text color to white
+    notFoundMessage.style.backgroundColor = 'black';
+    notFoundMessage.style.color = 'white';
     notFoundMessage.style.textAlign = 'center';
     notFoundMessage.style.paddingTop = '20%';
     notFoundMessage.style.fontSize = '24px';
