@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #161923;
+  color: #fff;
+}
+
+#paintCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#fetchingText {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  font-size: 24px;
+}
