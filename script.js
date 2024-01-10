@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   setTimeout(function() {
-    var redirectTo = 'https://google.com'; // REPLACE WITH URL
+    var redirectTo = 'OFFLINE'; // REPLACE WITH URL
     var notificationMessage = 'Tunnel offline, come back later.';
 
     if (isValidUrl(redirectTo)) {
