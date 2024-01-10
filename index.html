@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon"
-    href="https://camo.githubusercontent.com/ea14133a8f0cb9bb1902f7723196d410a289810085be786e4afc4aff68f0740a/68747470733a2f2f6d6574656f72636c69656e742e636f6d2f69636f6e2e706e67"
+    href="https://camo.githubusercontent.com/28981085be786ea14133a8f0cb9bb1902f7723196d410a0e4afc4aff68f0740a/68747470733a2f2f6d6574656f72636c69656e742e636f6d2f69636f6e2e706e67"
     type="image/png">
   <style>
     body {
@@ -23,24 +23,23 @@
       height: 100%;
     }
 
-    #fetchingText {
+    #fetchingText,
+    #resetText {
       position: fixed;
-      top: 45%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       z-index: 9999;
-      font-size: 24px;
       user-select: none;
     }
 
+    #fetchingText {
+      top: 45%;
+      font-size: 24px;
+    }
+
     #resetText {
-      position: fixed;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
       font-size: 16px;
-      user-select: none;
       cursor: default;
     }
   </style>
@@ -49,7 +48,6 @@
 
 <body>
   <div id="fetchingText">Fetching Tunnel...</div>
-  <div id="resetText">Click to reset</div>
   <canvas id="paintCanvas"></canvas>
   <script src="script.js"></script>
 </body>
