@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   setTimeout(function() {
-    const redirectTo = 'https://mpeg-princeton-sg-communications.trycloudflare.com'; // REPLACE WITH URL
+    const redirectTo = 'OFFLINE'; // REPLACE WITH URL
 
     if (isValidUrl(redirectTo)) {
       try {
