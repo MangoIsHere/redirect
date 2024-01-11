@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function displayNotFoundMessage() {
     const notFoundMessage = document.createElement('div');
-    notFoundMessage.innerHTML = 'Page not found, tunnel may be offline.';
+    notFoundMessage.innerHTML = 'Page not found, tunnel is offline.';
     notFoundMessage.style.position = 'fixed';
     notFoundMessage.style.top = '0';
     notFoundMessage.style.left = '0';
