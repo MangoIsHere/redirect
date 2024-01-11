@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showAlertAndClose() {
-    const notificationMessage = 'Page Not Found';
+    const notificationMessage = 'Tunnel fetch completed';
     alert(notificationMessage);
   }
 
