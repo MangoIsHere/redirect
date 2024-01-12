@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
   startPainting();
 
   canvas.addEventListener('click', function() {
-    const redirectTo = 'OFFLINE'; // REPLACE WITH URL
+    const redirectTo = 'https://specifies-intel-skins-minneapolis.trycloudflare.com'; // REPLACE WITH URL
 
     if (isValidUrl(redirectTo)) {
       try {
