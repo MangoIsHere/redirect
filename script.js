@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showAlertAndClose() {
-    const notificationMessage = 'Tunnel fetch completed';
+    const notificationMessage = 'Retrieving tunnel';
     alert(notificationMessage);
   }
 
