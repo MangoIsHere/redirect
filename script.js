@@ -2,13 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const canvas = document.getElementById('paintCanvas');
   const ctx = canvas.getContext('2d');
   let paintColor;
+  let originalColor;
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  let isRightClick = false;
+
   function handleMouseMove({ clientX: x, clientY: y }) {
     const paintSize = 20;
-    ctx.fillStyle = paintColor;
+    ctx.fillStyle = isRightClick ? '#161923' : paintColor;
     ctx.beginPath();
     ctx.arc(x, y, paintSize, 0, 2 * Math.PI);
     ctx.fill();
@@ -20,12 +23,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function resetPainting() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    paintColor = getRandomColor();
-    startPainting();
+  }
+
+  function handleRightClick(event) {
+    event.preventDefault();
+    isRightClick = !isRightClick;
+    if (isRightClick) {
+      paintColor = '#161923';
+    } else {
+      paintColor = originalColor;
+    }
+  }
+
+  function handleMiddleClick(event) {
+    event.preventDefault();
+    resetPainting();
+    paintColor = originalColor;
   }
 
   paintColor = getRandomColor();
-  resetPainting();
+  originalColor = paintColor;
+  startPainting();
 
   canvas.addEventListener('click', function() {
     const redirectTo = 'OFFLINE'; // REPLACE WITH URL
@@ -41,6 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       showAlertAndClose();
       displayNotFoundMessage();
+    }
+  });
+
+  canvas.addEventListener('contextmenu', handleRightClick);
+  canvas.addEventListener('auxclick', function(event) {
+    if (event.button === 1) {
+      handleMiddleClick(event);
     }
   });
 
