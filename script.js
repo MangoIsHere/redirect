@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let isRightClick = false;
 
   function handleMouseMove({ clientX: x, clientY: y }) {
-    const paintSize = 20;
+    const paintSize = 15;
     ctx.fillStyle = isRightClick ? '#161923' : paintColor;
     ctx.beginPath();
     ctx.arc(x, y, paintSize, 0, 2 * Math.PI);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
   startPainting();
 
   canvas.addEventListener('click', function() {
-    const redirectTo = 'https://specifies-intel-skins-minneapolis.trycloudflare.com'; // REPLACE WITH URL
+    const redirectTo = 'OFFLINE'; // REPLACE WITH URL
 
     if (isValidUrl(redirectTo)) {
       try {
