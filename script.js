@@ -1,54 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const canvas = document.getElementById('paintCanvas');
-  const ctx = canvas.getContext('2d');
-  let paintColor;
-  let originalColor;
+document.addEventListener("DOMContentLoaded", function () {
+  const redirectTo = "OFFLINE"; // REPLACE WITH URL
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  let isRightClick = false;
-
-  function handleMouseMove({ clientX: x, clientY: y }) {
-    const paintSize = 15;
-    ctx.fillStyle = isRightClick ? '#161923' : paintColor;
-    ctx.beginPath();
-    ctx.arc(x, y, paintSize, 0, 2 * Math.PI);
-    ctx.fill();
-  }
-
-  function startPainting() {
-    document.addEventListener('mousemove', handleMouseMove);
-  }
-
-  function resetPainting() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
-
-  function handleRightClick(event) {
-    event.preventDefault();
-    isRightClick = !isRightClick;
-    if (isRightClick) {
-      paintColor = '#161923';
-    } else {
-      paintColor = originalColor;
-    }
-  }
-
-  function handleMiddleClick(event) {
-    event.preventDefault();
-    resetPainting();
-    paintColor = originalColor;
-  }
-
-  paintColor = getRandomColor();
-  originalColor = paintColor;
-  startPainting();
-
-  canvas.addEventListener('click', function() {
-    const redirectTo = 'OFFLINE'; // REPLACE WITH URL
-
-    if (isValidUrl(redirectTo)) {
+  setTimeout(function () {
+    if (!overlayDisplayed && isValidUrl(redirectTo)) {
       try {
         showAlertAndClose();
         window.location.href = redirectTo;
@@ -56,26 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error(error);
         displayNotFoundMessage();
       }
-    } else {
+    } else if (!overlayDisplayed) {
       showAlertAndClose();
       displayNotFoundMessage();
     }
-  });
+  }, 5000);
 
-  canvas.addEventListener('contextmenu', handleRightClick);
-  canvas.addEventListener('auxclick', function(event) {
-    if (event.button === 1) {
-      handleMiddleClick(event);
-    }
-  });
+  let overlayDisplayed = false;
 
-  function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  const overlayElement = document.getElementById("overlay");
+  if (overlayElement) {
+    overlayElement.addEventListener("click", function () {
+      this.style.display = "none";
+    });
   }
 
   function isValidUrl(url) {
@@ -88,24 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showAlertAndClose() {
-    const notificationMessage = 'Retrieving tunnel';
+    const notificationMessage = "Retrieving tunnel";
     alert(notificationMessage);
+
+    overlayDisplayed = true;
   }
 
   function displayNotFoundMessage() {
-    const notFoundMessage = document.createElement('div');
-    notFoundMessage.innerHTML = 'Page not found, tunnel is offline.';
-    notFoundMessage.style.position = 'fixed';
-    notFoundMessage.style.top = '0';
-    notFoundMessage.style.left = '0';
-    notFoundMessage.style.width = '100%';
-    notFoundMessage.style.height = '100%';
-    notFoundMessage.style.backgroundColor = 'black';
-    notFoundMessage.style.color = 'white';
-    notFoundMessage.style.textAlign = 'center';
-    notFoundMessage.style.paddingTop = '20%';
-    notFoundMessage.style.fontSize = '24px';
-    notFoundMessage.style.zIndex = '9999';
+    const notFoundMessage = document.createElement("div");
+    notFoundMessage.innerHTML = "Page not found, tunnel is offline.";
+    notFoundMessage.style.position = "fixed";
+    notFoundMessage.style.top = "0";
+    notFoundMessage.style.left = "0";
+    notFoundMessage.style.width = "100%";
+    notFoundMessage.style.height = "100%";
+    notFoundMessage.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    notFoundMessage.style.color = "white";
+    notFoundMessage.style.textAlign = "center";
+    notFoundMessage.style.paddingTop = "20%";
+    notFoundMessage.style.fontSize = "24px";
+    notFoundMessage.style.zIndex = "9999";
 
     document.body.appendChild(notFoundMessage);
   }
