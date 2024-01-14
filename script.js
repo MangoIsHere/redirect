@@ -34,13 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function showAlertAndClose() {
-    const notificationMessage = "Retrieving tunnel";
-    alert(notificationMessage);
-
-    overlayDisplayed = true;
-  }
-
   function displayNotFoundMessage() {
     const notFoundMessage = document.createElement("div");
     notFoundMessage.innerHTML = "Page not found, tunnel is offline.";
