@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const redirectTo = "OFFLINE"; // REPLACE WITH URL
+  const redirectTo = "https://cycling-controllers-disk-panic.trycloudflare.com"; // REPLACE WITH URL
 
   setTimeout(function () {
     if (!overlayDisplayed && isValidUrl(redirectTo)) {
