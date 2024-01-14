@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document.body.style.userSelect = "none";
+  document.body.style.MozUserSelect = "none";
+  document.body.style.msUserSelect = "none";
+  document.body.style.pointerEvents = "none";
+
   const redirectTo = "OFFLINE"; // REPLACE WITH URL
 
   setTimeout(function () {
@@ -33,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
   }
-  
+
   function showAlertAndClose() {
     const notificationMessage = "Confirm to access tunnel";
     alert(notificationMessage);
