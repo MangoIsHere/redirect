@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     if (!overlayDisplayed && isValidUrl(redirectTo)) {
       try {
+        showAlertAndClose();
         window.location.href = redirectTo;
       } catch (error) {
         console.error(error);
         displayNotFoundMessage();
       }
     } else if (!overlayDisplayed) {
+      showAlertAndClose();
       displayNotFoundMessage();
     }
   }, 5000);
@@ -32,6 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
+  function showAlertAndClose() {
+    const notificationMessage = "Retrieving tunnel";
+    alert(notificationMessage);
+
+    overlayDisplayed = true;
+  }
+
   function displayNotFoundMessage() {
     const notFoundMessage = document.createElement("div");
     notFoundMessage.innerHTML = "Page not found, tunnel is offline.";
