@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   function showAlertAndClose() {
-    const notificationMessage = "Retrieving tunnel";
+    const notificationMessage = "Confirm to access tunnel";
     alert(notificationMessage);
 
     overlayDisplayed = true;
