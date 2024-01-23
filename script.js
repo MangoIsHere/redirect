@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.style.msUserSelect = "none";
   document.body.style.pointerEvents = "none";
 
-  const redirectTo = "https://hearing-thank-holes-floppy.trycloudflare.com"; // REPLACE WITH URL
+  const redirectTo = "OFFLINE"; // REPLACE WITH URL
 
   setTimeout(function () {
     if (!overlayDisplayed && isValidUrl(redirectTo)) {
